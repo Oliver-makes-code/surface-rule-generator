@@ -56,12 +56,18 @@ export type ConditionSurfaceRule = {
 
 export function ConditionSurfaceRule(
     if_true: Condition,
-    then_run: SurfaceRule,
+    ...then_run: SurfaceRule[]
 ): ConditionSurfaceRule {
+    if (then_run.length == 1)
+        return {
+            type: SurfaceRuleType.condition,
+            if_true,
+            then_run: then_run[0],
+        };
     return {
         type: SurfaceRuleType.condition,
         if_true,
-        then_run,
+        then_run: SequenceSurfaceRule(...then_run)
     };
 }
 
