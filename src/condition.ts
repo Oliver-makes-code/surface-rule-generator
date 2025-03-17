@@ -294,7 +294,7 @@ export const SurfaceRules = {
         secondary_depth_range: 0,
     }),
 
-    AboveWater: WaterCondition({
+    NoWaterAbove: WaterCondition({
         offset: -1,
         surface_depth_multiplier: 0,
         add_stone_depth: false,
